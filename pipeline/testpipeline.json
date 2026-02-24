@@ -55,7 +55,10 @@
 						"referenceName": "ds_adls2_xml_csv",
 						"type": "DatasetReference",
 						"parameters": {
-							"file_folder": "@formatDateTime(utcNow(),'YYYY/MM/DD')"
+							"file_folder": {
+								"value": "@formatDateTime(utcNow(),'yyyy/MM/dd')",
+								"type": "Expression"
+							}
 						}
 					}
 				]
