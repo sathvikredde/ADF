@@ -1,6 +1,5 @@
 {
-	"name": "testpipeline
-	",
+	"name": "testpipeline",
 	"properties": {
 		"activities": [
 			{
