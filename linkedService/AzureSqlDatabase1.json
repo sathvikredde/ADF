@@ -1,0 +1,46 @@
+{
+	"name": "AzureSqlDatabase1",
+	"properties": {
+		"parameters": {
+			"p_server": {
+				"type": "string"
+			},
+			"p_db": {
+				"type": "string"
+			},
+			"p_kv_url": {
+				"type": "string"
+			},
+			"p_secret_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "@{linkedService().p_server}",
+			"database": "@{linkedService().p_db}",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "harpadmin",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_kv_dev",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"kv_url": {
+							"value": "@linkedService().p_kv_url",
+							"type": "Expression"
+						}
+					}
+				},
+				"secretName": {
+					"value": "@linkedService().p_secret_name",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}
