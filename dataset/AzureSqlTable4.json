@@ -1,0 +1,22 @@
+{
+	"name": "AzureSqlTable4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"p_server": "harpdevserver.database.windows.net",
+				"p_db": "devdb",
+				"p_kv_url": "https://kv-dev-001-md.vault.azure.net/",
+				"p_secret_name": "sqlpass"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "",
+			"table": ""
+		}
+	}
+}
