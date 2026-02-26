@@ -1,11 +1,14 @@
 {
-	"name": "ds_adls",
+	"name": "ds_adls_gen2",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adlsgen2",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
+			"FolderName": {
+				"type": "string"
+			},
 			"FileName": {
 				"type": "string"
 			}
@@ -19,30 +22,16 @@
 					"value": "@dataset().FileName",
 					"type": "Expression"
 				},
-				"fileSystem": "invoicepdflanding"
+				"fileSystem": {
+					"value": "@dataset().FolderName",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "saleDate",
-				"type": "String"
-			},
-			{
-				"name": "salesItem",
-				"type": "String"
-			},
-			{
-				"name": "country",
-				"type": "String"
-			},
-			{
-				"name": "quantity",
-				"type": "String"
-			}
-		]
+		"schema": []
 	}
 }
