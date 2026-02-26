@@ -51,7 +51,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "ds_adls",
+						"referenceName": "ds_adls_new",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -142,7 +142,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "ds_adls",
+						"referenceName": "ds_adls_new",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -261,8 +261,6 @@
 			{
 				"name": "Script_update_watermark",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
@@ -299,8 +297,6 @@
 			{
 				"name": "Script_update_audit_on_success",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Script_update_watermark",
@@ -337,8 +333,6 @@
 			{
 				"name": "Script_update_audit_on_fail",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
