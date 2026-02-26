@@ -16,7 +16,7 @@
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 3,
-					"retryIntervalInSeconds": 15,
+					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
 				},
@@ -25,7 +25,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select max(updated_at) from dbo.etl_watermark\nwhere source_name = '@{activity('Get Metadata1').output.itemType}'",
+							"value": "select max(updated_at) from dbo.etl_watermark\nwhere source_name = '@{activity('Get Metadata1').output.itemName}'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -44,7 +44,7 @@
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 3,
-					"retryIntervalInSeconds": 15,
+					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
 				},
@@ -69,8 +69,6 @@
 			{
 				"name": "Set_startime",
 				"type": "SetVariable",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Lookup_values_in_wk_tbl",
@@ -87,7 +85,7 @@
 				"typeProperties": {
 					"variableName": "StartTime",
 					"value": {
-						"value": "@activity('Lookup_values_in_wk_tbl').output.firstRow",
+						"value": "@'{activity('Lookup_values_in_wk_tbl').output.firstRow}'",
 						"type": "Expression"
 					}
 				}
@@ -95,8 +93,6 @@
 			{
 				"name": "Set_EndTime",
 				"type": "SetVariable",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Lookup_values_in_wk_tbl",
@@ -140,7 +136,7 @@
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 3,
-					"retryIntervalInSeconds": 15,
+					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
 				},
@@ -263,7 +259,7 @@
 				],
 				"policy": {
 					"timeout": "0.12:00:00",
-					"retry": 0,
+					"retry": 3,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
@@ -302,7 +298,7 @@
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 3,
-					"retryIntervalInSeconds": 15,
+					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
 				},
@@ -340,7 +336,7 @@
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 3,
-					"retryIntervalInSeconds": 15,
+					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
 				},
