@@ -286,7 +286,7 @@
 						{
 							"type": "Query",
 							"text": {
-								"value": "insert into dbo.etl_watermark values('@{activity('Get Metadata1').output.itemName}', 'ok', @{activity('Get Metadata1').output.lastModified}, @{variables('EndTime')})",
+								"value": "@concat('INSERT INTO dbo.etl_watermark VALUES (''', \n    activity('Get Metadata1').output.itemName, ''', ''ok'', ''', \n    activity('Get_Files').output.lastModified, ''', ''', \n    variables('EndTime'), ''')')",
 								"type": "Expression"
 							}
 						}
@@ -322,7 +322,7 @@
 						{
 							"type": "Query",
 							"text": {
-								"value": "insert into dbo.etl_audit values(@{pipeline().RunId}, '@{pipeline().Pipeline}', '@{activity('Get Metadata1').output.itemName}', @{variables('EndTime')}, utcNow(), 'Success', 'pipeline succeeded')",
+								"value": "@concat('INSERT INTO dbo.etl_audit VALUES (''', \n    pipeline().RunId, ''', ''', \n    pipeline().Pipeline, ''', ''', \n    activity('Get Metadata1').output.itemName, ''', ''', \n    variables('EndTime'), ''', ''', \n    utcNow(), ''', ''Success'', ''pipeline Succeded'')')",
 								"type": "Expression"
 							}
 						}
@@ -358,7 +358,7 @@
 						{
 							"type": "Query",
 							"text": {
-								"value": "insert into dbo.etl_audit values(@{pipeline().RunId}, '@{pipeline().Pipeline}', '@{activity('Get Metadata1').output.itemName}', @{variables('EndTime')}, utcNow(), 'Fail', 'pipeline Failed')",
+								"value": "@concat('INSERT INTO dbo.etl_audit VALUES (''', \n    pipeline().RunId, ''', ''', \n    pipeline().Pipeline, ''', ''', \n    activity('Get Metadata1').output.itemName, ''', ''', \n    variables('EndTime'), ''', ''', \n    utcNow(), ''', ''Fail'', ''pipeline Failed'')')",
 								"type": "Expression"
 							}
 						}
