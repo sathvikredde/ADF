@@ -233,7 +233,13 @@
 							"inputs": [
 								{
 									"referenceName": "ds_adls_gen2",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"FileName": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [

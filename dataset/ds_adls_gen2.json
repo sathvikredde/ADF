@@ -22,10 +22,7 @@
 					"value": "@dataset().FileName",
 					"type": "Expression"
 				},
-				"fileSystem": {
-					"value": "@dataset().FolderName",
-					"type": "Expression"
-				}
+				"fileSystem": "invoicepdflanding"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
