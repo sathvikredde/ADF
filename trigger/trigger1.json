@@ -3,6 +3,16 @@
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
+		"pipeline": {
+			"pipelineReference": {
+				"referenceName": "pl_totest_TW_copy1",
+				"type": "PipelineReference"
+			},
+			"parameters": {
+				"p_startTime": "@trigger().outputs.windowStartTime",
+				"p_endTime": "@trigger().outputs.windowEndTime"
+			}
+		},
 		"type": "TumblingWindowTrigger",
 		"typeProperties": {
 			"frequency": "Minute",
