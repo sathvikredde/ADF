@@ -7,6 +7,10 @@
 			"pipelineReference": {
 				"referenceName": "pl_totest_TW",
 				"type": "PipelineReference"
+			},
+			"parameters": {
+				"p_startTime": "@trigger().outputs.windowStartTime",
+				"p_endTime": "@trigger().outputs.windowEndTime"
 			}
 		},
 		"type": "TumblingWindowTrigger",
