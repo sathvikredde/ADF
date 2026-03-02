@@ -54,6 +54,14 @@
 		"TW2_properties_pipeline_parameters_p_endTime": {
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowEndTime"
+		},
+		"trigger1_properties_pipeline_parameters_p_startTime": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
+		"trigger1_properties_pipeline_parameters_p_endTime": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowEndTime"
 		}
 	},
 	"variables": {
@@ -1184,7 +1192,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipeline": {
 					"pipelineReference": {
 						"referenceName": "pl_totest_TW",
@@ -1270,6 +1278,16 @@
 			"properties": {
 				"annotations": [],
 				"runtimeState": "Started",
+				"pipeline": {
+					"pipelineReference": {
+						"referenceName": "pl_totest_TW",
+						"type": "PipelineReference"
+					},
+					"parameters": {
+						"p_startTime": "[parameters('trigger1_properties_pipeline_parameters_p_startTime')]",
+						"p_endTime": "[parameters('trigger1_properties_pipeline_parameters_p_endTime')]"
+					}
+				},
 				"type": "TumblingWindowTrigger",
 				"typeProperties": {
 					"frequency": "Minute",
@@ -1283,7 +1301,9 @@
 					"dependsOn": []
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_totest_TW')]"
+			]
 		}
 	]
 }
