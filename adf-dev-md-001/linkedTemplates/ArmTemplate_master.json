@@ -11,9 +11,41 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_adlsgen2'"
 		},
+		"ls_gen2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_gen2'"
+		},
 		"ls_adlsgen2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://storagedevmd.dfs.core.windows.net/"
+		},
+		"ls_dummyJSON_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dummyjson.com"
+		},
+		"ls_kv_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://kv-dev-001-md.vault.azure.net/"
+		},
+		"ls_sftp_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "storagedevmd.blob.core.windows.net"
+		},
+		"ls_sftp_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "storagedevmd.sftpuser"
+		},
+		"ls_sqldb_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "harpdevserver.database.windows.net"
+		},
+		"ls_sqldb_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "devdb"
+		},
+		"ls_sqldb_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "harpadmin"
 		},
 		"containerUri": {
 			"type": "string",
@@ -45,8 +77,32 @@
 					"ls_adlsgen2_accountKey": {
 						"value": "[parameters('ls_adlsgen2_accountKey')]"
 					},
+					"ls_gen2_connectionString": {
+						"value": "[parameters('ls_gen2_connectionString')]"
+					},
 					"ls_adlsgen2_properties_typeProperties_url": {
 						"value": "[parameters('ls_adlsgen2_properties_typeProperties_url')]"
+					},
+					"ls_dummyJSON_properties_typeProperties_url": {
+						"value": "[parameters('ls_dummyJSON_properties_typeProperties_url')]"
+					},
+					"ls_kv_properties_typeProperties_baseUrl": {
+						"value": "[parameters('ls_kv_properties_typeProperties_baseUrl')]"
+					},
+					"ls_sftp_properties_typeProperties_host": {
+						"value": "[parameters('ls_sftp_properties_typeProperties_host')]"
+					},
+					"ls_sftp_properties_typeProperties_userName": {
+						"value": "[parameters('ls_sftp_properties_typeProperties_userName')]"
+					},
+					"ls_sqldb_properties_typeProperties_server": {
+						"value": "[parameters('ls_sqldb_properties_typeProperties_server')]"
+					},
+					"ls_sqldb_properties_typeProperties_database": {
+						"value": "[parameters('ls_sqldb_properties_typeProperties_database')]"
+					},
+					"ls_sqldb_properties_typeProperties_userName": {
+						"value": "[parameters('ls_sqldb_properties_typeProperties_userName')]"
 					}
 				}
 			},
