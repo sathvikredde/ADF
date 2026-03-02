@@ -781,12 +781,10 @@
 				},
 				"parameters": {
 					"p_startTime": {
-						"type": "string",
-						"defaultValue": "@trigger().outputs.windowStartTime"
+						"type": "string"
 					},
 					"p_endTime": {
-						"type": "string",
-						"defaultValue": "@trigger().outputs.windowEndTime"
+						"type": "string"
 					}
 				},
 				"variables": {
