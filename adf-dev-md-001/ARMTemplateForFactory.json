@@ -46,6 +46,14 @@
 		"ls_sqldb_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "harpadmin"
+		},
+		"TW2_properties_pipeline_parameters_p_startTime": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
+		"TW2_properties_pipeline_parameters_p_endTime": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowEndTime"
 		}
 	},
 	"variables": {
@@ -1182,7 +1190,10 @@
 						"referenceName": "pl_totest_TW",
 						"type": "PipelineReference"
 					},
-					"parameters": {}
+					"parameters": {
+						"p_startTime": "[parameters('TW2_properties_pipeline_parameters_p_startTime')]",
+						"p_endTime": "[parameters('TW2_properties_pipeline_parameters_p_endTime')]"
+					}
 				},
 				"type": "TumblingWindowTrigger",
 				"typeProperties": {
@@ -1248,6 +1259,28 @@
 							]
 						}
 					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger1')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"type": "TumblingWindowTrigger",
+				"typeProperties": {
+					"frequency": "Minute",
+					"interval": 15,
+					"startTime": "2026-03-02T21:26:00Z",
+					"delay": "00:00:00",
+					"maxConcurrency": 50,
+					"retryPolicy": {
+						"intervalInSeconds": 30
+					},
+					"dependsOn": []
 				}
 			},
 			"dependsOn": []
