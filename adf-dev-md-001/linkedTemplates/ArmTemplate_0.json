@@ -628,6 +628,14 @@
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
 									"recursive": true,
+									"modifiedDatetimeStart": {
+										"value": "@pipeline().parameters.p_startTime",
+										"type": "Expression"
+									},
+									"modifiedDatetimeEnd": {
+										"value": "@pipeline().parameters.p_endTime",
+										"type": "Expression"
+									},
 									"wildcardFileName": "*",
 									"enablePartitionDiscovery": false
 								},
@@ -770,6 +778,16 @@
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"p_startTime": {
+						"type": "string",
+						"defaultValue": "@trigger().outputs.windowStartTime"
+					},
+					"p_endTime": {
+						"type": "string",
+						"defaultValue": "@trigger().outputs.windowEndTime"
+					}
 				},
 				"variables": {
 					"rowsread": {
