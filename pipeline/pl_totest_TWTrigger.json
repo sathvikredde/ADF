@@ -5,13 +5,60 @@
 			{
 				"name": "Wait1",
 				"type": "Wait",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"waitTimeInSeconds": 1
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "trigger_starttimr",
+					"value": "@trigger().outputs.windowStartTime"
+				}
+			},
+			{
+				"name": "Set variable2",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "trigger_endtime",
+					"value": {
+						"value": "@trigger().outputs.windowEndTime",
+						"type": "Expression"
+					}
+				}
 			}
 		],
+		"variables": {
+			"trigger_starttimr": {
+				"type": "String"
+			},
+			"trigger_endtime": {
+				"type": "String",
+				"defaultValue": "@trigger().outputs.windowEndTime"
+			}
+		},
 		"annotations": []
 	}
 }
