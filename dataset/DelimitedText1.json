@@ -1,5 +1,5 @@
 {
-	"name": "ds_adls_new",
+	"name": "DelimitedText1",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adlsgen2",
@@ -10,8 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "2026/02/24",
-				"fileSystem": "bronze"
+				"fileSystem": "invoicepdflanding"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
