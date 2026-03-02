@@ -138,7 +138,7 @@
 						"typeProperties": {
 							"variableName": "rowsread",
 							"value": {
-								"value": "@activity('Copy data1').output.rowsRead",
+								"value": "@activity('Copy data1').output.dataRead",
 								"type": "Expression"
 							}
 						}
@@ -162,7 +162,7 @@
 						"typeProperties": {
 							"variableName": "rowswrite",
 							"value": {
-								"value": "@activity('Copy data1').output.rowsWritten",
+								"value": "@activity('Copy data1').output.dataWritten",
 								"type": "Expression"
 							}
 						}
