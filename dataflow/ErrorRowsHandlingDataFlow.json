@@ -3,6 +3,13 @@
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
+			"parameters": [
+				{
+					"name": "p_filename",
+					"type": "string",
+					"defaultValue": "''"
+				}
+			],
 			"sources": [
 				{
 					"dataset": {
@@ -40,6 +47,9 @@
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     p_filename as string ('') ",
+				"}",
 				"source(output(",
 				"          saleDate as string,",
 				"          salesItem as string,",
@@ -49,10 +59,10 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 split(isNull(toDate(saleDate,'dd-MMM-yyyy')),",
+				"source1 split(isNull(toDate(saleDate,'dd-MMM-yyyy')) || isNull(toInteger(quantity)),",
 				"     disjoint: false) ~> split1@(ErrorRows, GoodRows)",
-				"split1@ErrorRows derive(FileName = 'File') ~> Filename",
-				"split1@GoodRows derive(Filename = 'File',",
+				"split1@ErrorRows derive(FileName = $p_filename) ~> Filename",
+				"split1@GoodRows derive(Filename = $p_filename,",
 				"          saleDate = toDate(saleDate, 'dd-MMM-yyyy'),",
 				"          quantity = toInteger(quantity)) ~> derivedColumn1",
 				"Filename sink(allowSchemaDrift: true,",
@@ -69,7 +79,7 @@
 				"     updateable:false,",
 				"     upsertable:false,",
 				"     format: 'table',",
-				"     errorHandlingOption: 'stopOnFirstError',",
+				"     errorHandlingOption: 'skipAndContinue',",
 				"     mapColumn(",
 				"          sale_date = saleDate,",
 				"          sales_item = salesItem,",
@@ -91,7 +101,7 @@
 				"     updateable:false,",
 				"     upsertable:false,",
 				"     format: 'table',",
-				"     errorHandlingOption: 'stopOnFirstError',",
+				"     errorHandlingOption: 'skipAndContinue',",
 				"     mapColumn(",
 				"          sale_date = saleDate,",
 				"          sales_item = salesItem,",
